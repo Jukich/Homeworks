@@ -107,17 +107,8 @@ namespace Homework7
             Console.WriteLine("Model: " + Model);
             Console.WriteLine("Brand: " + brand);
             Console.WriteLine("Registration number: " + regnumber);
-            Console.Write("Is Diesel: ");
+            Console.WriteLine($"Is Diesel: {(isDiesel ? "Yes" : "No")}");
 
-            switch (isDiesel)
-            {
-                case true:
-                    Console.WriteLine("Yes");
-                    break;
-                case false:
-                    Console.WriteLine("No");
-                    break;
-            }
 
             base.VehiclePrint();
             Console.WriteLine("Number of seats: " + numberofseats);
