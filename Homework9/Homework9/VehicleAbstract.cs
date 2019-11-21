@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Homework9
+namespace VehicleAbstract
 {
     public abstract class Vehicle
     {
@@ -20,18 +20,9 @@ namespace Homework9
 
         public abstract void Drive(double speed);
         public abstract void GetYears();
-
-        protected Vehicle() { }
-        protected Vehicle(string name, int yearofcreation, string regnumber, string engine)
-        {
-            this.name = name;
-            this.yearofcreation = yearofcreation;
-            this.regnumber = regnumber;
-            this.engine = engine;
-        }
     }
 
-    /*public class Car : Vehicle
+    public class Car : Vehicle
     {
         private int numberofwheels;
         private bool isturboactivated = false;
@@ -88,5 +79,4 @@ namespace Homework9
         }
 
     }
-    */
 }

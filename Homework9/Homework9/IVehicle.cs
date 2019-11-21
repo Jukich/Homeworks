@@ -24,20 +24,19 @@ namespace Homework9
         void GetYears();
     }
 
-    class Car : Vehicle, IVehicle
+    class Car : IVehicle
     {
         private int numberofwheels;
         private bool isturboactivated = false;
         
+        public string Name { get; set; }
+        public int YearOfCreation { get; set; }
+        public string RegNumber { get; set; }
+        public string Engine { get; set; }
         public int NumberOfWheels { get { return numberofwheels; } set { this.numberofwheels = value; } }
 
-        public Car() { }
-        public Car(string name, int yearofcreation, string regnumber, string engine,int numberofwheels)
-            :base(name, yearofcreation, regnumber, engine)
-        {
-            this.numberofwheels = numberofwheels;
-        }
-        public override void Drive(double speed)
+
+        public void Drive(double speed)
         {
             if (this.isturboactivated == true)
             {
@@ -50,7 +49,7 @@ namespace Homework9
             }
 
         }
-        public override void GetYears()
+        public void GetYears()
         {
             Console.WriteLine("The car is {0} years old", DateTime.Now.Year - this.YearOfCreation);
 
@@ -69,36 +68,24 @@ namespace Homework9
     }
 
 
-    class Motorbike:Vehicle,IVehicle
+    class Motorbike:IVehicle
     {
 
-        public Motorbike() { }
-        public Motorbike(string name, int yearofcreation, string regnumber, string engine)
-            : base(name, yearofcreation, regnumber, engine)
-        {
-            
-        }
+        private int yearofcreation;
+        string IVehicle.Name { get; set; }
+        int IVehicle.YearOfCreation { get { return this.yearofcreation; } set { this.yearofcreation = value; } }
+        string IVehicle.RegNumber { get; set; }
+        string IVehicle.Engine { get; set; }
 
         void IVehicle.Drive(double speed)
         {
-             Console.WriteLine("Ivehicle motorbike is driving at speed of " + speed + " km/h");
+             Console.WriteLine("Motorbike is driving at speed of " + speed + " km/h");
            
         }
-        public override void Drive(double speed)
-        {
-            Console.WriteLine("Abstract motorbike is driving at speed of " + speed + " km/h");
-
-        }
-
 
         void IVehicle.GetYears()
         {
-            Console.WriteLine("Ivehicle motorbike is {0} years old", DateTime.Now.Year - this.YearOfCreation);
-
-        }
-        public override void GetYears()
-        {
-            Console.WriteLine("Abstract motorbike is {0} years old", DateTime.Now.Year - this.YearOfCreation);
+            Console.WriteLine("The motorbike is {0} years old", DateTime.Now.Year - this.yearofcreation);
 
         }
     }
