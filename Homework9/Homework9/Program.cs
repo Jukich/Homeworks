@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VehicleAbstract;
 using System.Diagnostics;
 
 namespace Homework9
@@ -20,7 +19,7 @@ namespace Homework9
 
             #region Task1
 
-            Car car = new Car();
+            Car car = new Car("Ford", 2002, "C1111", "Diesel", 0);
             car.StartTurbo();
             car.Drive(50);
             car.StopTurbo();
@@ -30,16 +29,13 @@ namespace Homework9
             car.GetYears();
             Console.WriteLine();
 
-            IVehicle motorbike = new Motorbike();
+            IVehicle motorbike = new Motorbike("Honda",2010,"PAAAAA","Gasoline");
             motorbike.YearOfCreation = 2012;
             motorbike.GetYears();
             motorbike.Drive(120);
             Console.WriteLine();
 
 
-            IVehicle[] iv = new IVehicle[5];
-            iv[0] = car;
-            iv[1] = motorbike;
             #endregion
 
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -47,13 +43,28 @@ namespace Homework9
             Console.ForegroundColor = ConsoleColor.White;
 
             #region Task2
-            VehicleAbstract.Car CarAb = new VehicleAbstract.Car();
+            Car CarAb = new Car("Opel",2010,"OB444AP","Diesel",4);
             CarAb.StartTurbo();
             CarAb.Drive(50);
 
-            VehicleAbstract.Motorbike MotorAb = new VehicleAbstract.Motorbike();
+            Motorbike MotorAb = new Motorbike("Yamaha",2011,"MOOTOOP","Hybrid");
+            MotorAb.Drive(200);
+            MotorAb.Name = "Yamaha";
+            MotorAb.RegNumber = "MOOTOOP";
+            MotorAb.YearOfCreation = 2008;
+            MotorAb.engine = "Hybrid";
+            
 
-            motorbike.GetYears();
+            IVehicle[] veh = new IVehicle[4];
+            veh[0] = car;
+            veh[1] = motorbike;
+            veh[2] = CarAb;
+            veh[3] = MotorAb;
+
+            foreach (IVehicle iv in veh)
+            {
+                Console.WriteLine("Model: {0}, RegNumber: {1}, Year of creation {2}", iv.Name, iv.RegNumber, iv.YearOfCreation);
+            }
             #endregion
 
             Console.ForegroundColor = ConsoleColor.Blue;
